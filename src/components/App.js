@@ -2,39 +2,37 @@ import React, { useState } from 'react';
 
 //Importar componentes
 //import Elements from './elementos';
-
-
 export function App({ initialData }) {
-  const [count, setCount] = useState(0);
   return (
     <div>
       <h1>{initialData.appName}</h1>
-      Aprendiendo React
-      <br />
-      <br />
-      <button onClick={() => setCount(count + 1)}>{count}</button>
+      <Hello />
       <br />
       <br />
       <Button />
+      <br />
+      <br />
     </div>
   );
 }
 
 /**
- * Muestra un boton
+ * Hola Mundo
  */
-function Button () {
-  //const [counter, setCounter] = useState(0);
-  return (
-    <button>{Math.random()}</button>
-  ); 
+function Hello() {
+  return ('Tabla de cuadrados'); 
 }
 
-
-
-
-
-
-
+/**
+ * Boton auto incrementable
+ */
+function Button() {
+  const [counter, setCounter] = useState(0);
+  return (
+    <button onClick={ () => setCounter(counter+1)}>
+      {counter + '^2= ' + counter*counter}
+    </button>
+  );
+}
 
 
