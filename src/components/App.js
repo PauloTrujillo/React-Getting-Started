@@ -2,36 +2,45 @@ import React, { useState } from 'react';
 
 //Importar componentes
 //import Elements from './elementos';
-export function App({ initialData }) {
+export function App() {
+  const [counter, setCounter] = useState(1);
   return (
     <div>
-      <h1>{initialData.appName}</h1>
-      <Hello />
-      <br />
-      <br />
-      <Button />
-      <br />
-      <br />
+      <Titulo />
+      <Button onClickFunction={ () => setCounter(counter + 1) }/>
+      <Display message={counter}/>
     </div>
   );
 }
 
 /**
- * Hola Mundo
+ * Boton auto incrementable
  */
-function Hello() {
-  return ('Tabla de cuadrados'); 
+function Button(props) {
+  //const handleClick = () => setCounter(counter+1);
+  return (
+    <button onClick={ props.onClickFunction }>
+      +1
+    </button>
+  );
 }
 
 /**
- * Boton auto incrementable
+ * Retorna mensaje con variable incremental
+ * @param {*} props 
  */
-function Button() {
-  const [counter, setCounter] = useState(0);
+function Display(props) {
   return (
-    <button onClick={ () => setCounter(counter+1)}>
-      {counter + '^2= ' + counter*counter}
-    </button>
+    <p>{props.message}</p>
+  );
+}
+
+/**
+ * Retorna titulo del programa
+ */
+function Titulo() {
+  return (
+    <p>Learning React</p>
   );
 }
 
